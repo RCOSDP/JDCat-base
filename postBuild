@@ -1,4 +1,8 @@
 #!/bin/bash
 set -e
-if [[ `file [0-9]*` == *HTML* ]]; then rm -f [0-9]*;fi
+for x in *; do
+  if [[ "$x" =~ ^[0-9]+$ && $(file -b "$x") =~ ^HTML ]]; then
+    rm "$x";
+  fi
+done
 rm -f apt.txt environment.yml postBuild
