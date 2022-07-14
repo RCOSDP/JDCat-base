@@ -5,4 +5,9 @@ for x in *; do
     rm "$x";
   fi
 done
-rm -f apt.txt environment.yml postBuild
+mkdir -p .binder
+for x in apt.txt environment.yml postBuild; do
+  if [[ -f "$x" ]]; then
+    mv -f "$x" .binder/
+  fi
+done
